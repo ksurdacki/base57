@@ -63,11 +63,13 @@ to the [Base64](https://en.wikipedia.org/wiki/Base64).
  base64 without padding |                  137dvdq8R2K/E0M8ngG2Ow |  22 | 1, /, 0 and O
                  base57 |                  rbfS7bspKXGvaaExLgoqg6 |  22 | short and clean
                 Ascii85 |                    f7)Phg:Tpb^CrssScQ8] |  20 | ), :, ^, and ]
-                 binary |                        ×~Ý½Ú¼Gb¿C<¶; |  16 | inappropriate for text
+                 binary |                      ×~Ý½Ú¼Gb¿�C<��¶; |  16 | inappropriate for text
 ```
 
 ## Why 57 ?
 
+- Algorithm operates on 64 bit chunks of data. Bytes are read in
+  [the little endian](https://en.wikipedia.org/wiki/Endianness) order.
 - A minimum number of [US-ASCII](https://en.wikipedia.org/wiki/ASCII) alphanumerical only characters
   (10+26+26 = 62) `N` needed for encoding a 64-bit integer is:
   ```
