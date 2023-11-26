@@ -10,7 +10,8 @@ import java.util.UUID;
 
 import static tech.surdacki.base57.Constants.*;
 
-public class Encoder {
+
+public final class Encoder {
 
     public static void encode(long n, ByteBuffer dst) {
         int value;
@@ -62,8 +63,8 @@ public class Encoder {
         dst.put(SYMBOLS[shift + value]);
 
         shift += value + 1;
-        value = (int)Long.remainderUnsigned(n, 56);
         assert n < 56;
+        value = (int)n;
         dst.put(SYMBOLS[shift + value]);
     }
 

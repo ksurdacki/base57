@@ -11,60 +11,61 @@ import java.util.UUID;
 
 import static tech.surdacki.base57.Constants.*;
 
-public class Decoder {
+
+public final class Decoder {
     public static long decodeLong(ByteBuffer src) {
-        long symbolValue;
-        long shiftedValue;
+        byte symbolValue;
+        int shiftedValue;
         long result = 0;
         int shift = 0;
 
-        symbolValue = SYMBOL_VALUES[0xFF & (int)src.get()];
+        symbolValue = SYMBOL_VALUES[Byte.toUnsignedInt(src.get())];
         shiftedValue = (570 + symbolValue - shift) % 57;
         result += shiftedValue * MAGNITUDES[0];
 
         shift += shiftedValue + 1;
-        symbolValue = SYMBOL_VALUES[0xFF & (int)src.get()];
+        symbolValue = SYMBOL_VALUES[Byte.toUnsignedInt(src.get())];
         shiftedValue = (570 + symbolValue - shift) % 57;
         result += shiftedValue * MAGNITUDES[1];
 
-        symbolValue = SYMBOL_VALUES[0xFF & (int)src.get()];
+        symbolValue = SYMBOL_VALUES[Byte.toUnsignedInt(src.get())];
         shiftedValue = (570 + symbolValue - shift) % 57;
         result += shiftedValue * MAGNITUDES[2];
 
         shift += shiftedValue + 1;
-        symbolValue = SYMBOL_VALUES[0xFF & (int)src.get()];
+        symbolValue = SYMBOL_VALUES[Byte.toUnsignedInt(src.get())];
         shiftedValue = (570 + symbolValue - shift) % 57;
         result += shiftedValue * MAGNITUDES[3];
 
-        symbolValue = SYMBOL_VALUES[0xFF & (int)src.get()];
+        symbolValue = SYMBOL_VALUES[Byte.toUnsignedInt(src.get())];
         shiftedValue = (570 + symbolValue - shift) % 57;
         result += shiftedValue * MAGNITUDES[4];
 
         shift += shiftedValue + 1;
-        symbolValue = SYMBOL_VALUES[0xFF & (int)src.get()];
+        symbolValue = SYMBOL_VALUES[Byte.toUnsignedInt(src.get())];
         shiftedValue = (570 + symbolValue - shift) % 57;
         result += shiftedValue * MAGNITUDES[5];
 
         shift += shiftedValue + 1;
-        symbolValue = SYMBOL_VALUES[0xFF & (int)src.get()];
+        symbolValue = SYMBOL_VALUES[Byte.toUnsignedInt(src.get())];
         shiftedValue = (570 + symbolValue - shift) % 57;
         result += shiftedValue * MAGNITUDES[6];
 
-        symbolValue = SYMBOL_VALUES[0xFF & (int)src.get()];
+        symbolValue = SYMBOL_VALUES[Byte.toUnsignedInt(src.get())];
         shiftedValue = (570 + symbolValue - shift) % 57;
         result += shiftedValue * MAGNITUDES[7];
 
         shift += shiftedValue + 1;
-        symbolValue = SYMBOL_VALUES[0xFF & (int)src.get()];
+        symbolValue = SYMBOL_VALUES[Byte.toUnsignedInt(src.get())];
         shiftedValue = (570 + symbolValue - shift) % 57;
         result += shiftedValue * MAGNITUDES[8];
 
-        symbolValue = SYMBOL_VALUES[0xFF & (int)src.get()];
+        symbolValue = SYMBOL_VALUES[Byte.toUnsignedInt(src.get())];
         shiftedValue = (570 + symbolValue - shift) % 57;
         result += shiftedValue * MAGNITUDES[9];
 
         shift += shiftedValue + 1;
-        symbolValue = SYMBOL_VALUES[0xFF & (int)src.get()];
+        symbolValue = SYMBOL_VALUES[Byte.toUnsignedInt(src.get())];
         shiftedValue = (570 + symbolValue - shift) % 57;
         result += shiftedValue * MAGNITUDES[10];
 

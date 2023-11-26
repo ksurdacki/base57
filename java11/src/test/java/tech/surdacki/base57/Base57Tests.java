@@ -3,21 +3,21 @@ package tech.surdacki.base57;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DynamicTest;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
 
 import java.io.*;
 import java.nio.ByteBuffer;
 import java.util.*;
 
-public final class Tests {
+
+public final class Base57Tests {
 
     static final int LIMITED_TESTS_NUMBER = 32;
     static final int DEFAULT_TESTS_NUMBER = 1024;
     static final int EXTENSIVE_TESTS_NUMBER = 1024 * 1024;
     static final int BLOB_MAX_SIZE = 32 * 1024 *1024;
 
-    @Test
+    @org.junit.jupiter.api.Test
     void testEncodingInvariance() {
         assertEquals("ZYY22344556", Encoder.encodeToString(0));
         assertEquals("pX8jCDYpvEF", Encoder.encodeToString(0x0123456789ABCDEFL));
@@ -26,7 +26,7 @@ public final class Tests {
         assertEquals("Vf47mkGtya9", Encoder.encodeToString(-1));
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void testDecodingInvariance() {
         assertEquals(0, Decoder.decodeLong("ZYY22344556"));
         assertEquals(0x0123456789ABCDEFL, Decoder.decodeLong("pX8jCDYpvEF"));
@@ -35,7 +35,7 @@ public final class Tests {
         assertEquals(-1, Decoder.decodeLong("Vf47mkGtya9"));
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void testSmallIntegers() {
         for (long x = -DEFAULT_TESTS_NUMBER; x <= DEFAULT_TESTS_NUMBER; ++x) {
             String encoded = Encoder.encodeToString(x);
@@ -43,7 +43,7 @@ public final class Tests {
         }
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void testRandomIntegers() {
         Random prng = new Random(0x28654A083F05F36BL);
         for(int t = 0; t < EXTENSIVE_TESTS_NUMBER; ++t) {
@@ -53,7 +53,7 @@ public final class Tests {
         }
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void testRandomUUIDs() {
         Random prng = new Random(0xCCAE957E275DC4F5L);
         for(int t = 0; t < EXTENSIVE_TESTS_NUMBER; ++t) {
@@ -63,7 +63,7 @@ public final class Tests {
         }
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void testIntegersInvalidDecoding() {
         assertDoesNotThrow(() -> Decoder.decodeLong("ZZZZZZZZZZZ"));
         assertDoesNotThrow(() -> Decoder.decodeLong("00000000000"));
